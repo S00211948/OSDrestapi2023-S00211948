@@ -6,8 +6,16 @@ const router = express.Router();
    router.get('/', async (req, res) => {
   
     try {      
+      const { name } = req.query;
+      let filter = {};
+  
+      if (name) {
+        filter.name = { $regex: `${name}`, $options: 'i' }
+      }
+
+
       var songs = [];
-      const artists = await Artist.find().select('albums');
+      const artists = await Artist.find(filter).select('albums');
 
       artists.forEach(album => {
         var subDocs = album.$getAllSubdocs()
@@ -15,6 +23,7 @@ const router = express.Router();
           songs += song
         });
       });
+
       res.json(songs);
     }
     catch (error){
