@@ -1,0 +1,123 @@
+POST http://localhost:3000/artists
+content-type: application/json
+
+{
+      "name":"Sample Band",
+      "nationality":"British",
+      "albums":[
+         {
+            "title":"Album1",
+            "artist":"Sampel Band",
+            "release_year":2012,
+            "songs":[
+                {
+                  "title":"I am a song",
+                  "artist":"Sample Band",
+                  "release_year":2012
+                }
+            ]
+         }
+      ]
+}
+###
+POST http://localhost:3000/artists
+content-type: application/json
+
+
+{
+      "name":"Mumford and Sons - RClient",
+      "nationality":"British",
+      "year_formed":2007,
+      "albums":[
+         {
+            "title":"Babel",
+            "artist":"Mumford and Sons",
+            "release_year":2012,
+            "songs":[
+               {
+                  "title":"I Will Wait",
+                  "artist":"Mumford and Sons",
+                  "release_year":2012
+               },
+               {
+                  "title":"Lover of the Light",
+                  "artist":"Mumford and Sons",
+                  "release_year":2012
+               },
+               {
+                  "title":"Whispers in the Dark",
+                  "artist":"Mumford and Sons",
+                  "release_year":2013
+               },
+               {
+                  "title":"Babel",
+                  "artist":"Mumford and Sons",
+                  "release_year":2013
+               },
+               {
+                  "title":"Hopeless Wanderer",
+                  "artist":"Mumford and Sons",
+                  "release_year":2012
+               }
+            ]
+         },
+         {
+            "title":"Wilder Mind",
+            "artist":"Mumford and Sons",
+            "release_year":2015,
+            "songs":[
+               {
+                  "title":"Believe",
+                  "artist":"Mumford and Sons",
+                  "release_year":2015
+               },
+               {
+                  "title":"The Wolf",
+                  "artist":"Mumford and Sons",
+                  "release_year":2015
+               },
+               {
+                  "title":"Ditmas",
+                  "artist":"Mumford and Sons",
+                  "release_year":2015
+               },
+               {
+                  "title":"Tompkins Square Park",
+                  "artist":"Mumford and Sons",
+                  "release_year":2015
+               },
+               {
+                  "title":"Just Smoke",
+                  "artist":"Mumford and Sons",
+                  "release_year":2016
+               }
+            ]
+         }
+      ]
+}
+###
+PUT http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+content-type: application/json
+
+{
+    "name":"Mumford and Sons - PUT"
+}
+###
+GET  http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+content-type: application/json
+
+###
+GET  http://localhost:3000/artists
+content-type: application/json
+
+###
+GET  http://localhost:3000/songs
+content-type: application/json
+
+###
+GET  http://localhost:3000/songs?name=Mumford%20and%20Sons
+content-type: application/json
+
+###
+DELETE   http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+content-type: application/json
