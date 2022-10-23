@@ -1,3 +1,4 @@
+### 1 - POST succeeds
 POST http://localhost:3000/artists
 content-type: application/json
 
@@ -19,7 +20,32 @@ content-type: application/json
          }
       ]
 }
-###
+
+### 2 - POST incorrect data
+POST http://localhost:3000/artists
+content-type: application/json
+
+{
+      "name":"Sample Band",
+      "nationality":"British",
+      "year_formed": "Not a number",
+      "albums":[
+         {
+            "title":"Album1",
+            "artist":"Sampel Band",
+            "release_year":2012,
+            "songs":[
+                {
+                  "title":"I am a song",
+                  "artist":"Sample Band",
+                  "release_year":2012
+                }
+            ]
+         }
+      ]
+}
+
+### POST a complete set of resources
 POST http://localhost:3000/artists
 content-type: application/json
 
@@ -95,29 +121,54 @@ content-type: application/json
          }
       ]
 }
-###
-PUT http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+### 8 - PUT succeeds
+PUT http://localhost:3000/artists/6355b129cd53964fae10bc8a
 content-type: application/json
 
 {
-    "name":"Mumford and Sons - PUT"
+    "name":"MUMFORD AND SONS - PUT"
 }
-###
-GET  http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+
+### 9 - PUT not found
+PUT http://localhost:3000/artists/6355b129cd53964fae10bc
 content-type: application/json
 
-###
+{
+    "name":"MUMFORD AND SONS - PUT"
+}
+
+### 10 - PUT  invalid data
+PUT http://localhost:3000/artists/6355b129cd53964fae10bc8a
+content-type: application/json
+
+{
+    "name":1997
+}
+
+### 3 - GET set of resources
 GET  http://localhost:3000/artists
 content-type: application/json
 
-###
+### 4 - GET individual
+GET  http://localhost:3000/artists/6355b129cd53964fae10bc8a
+content-type: application/json
+
+### 5 - GET individual fails
+GET  http://localhost:3000/artists/6355b129cd53964fae10
+content-type: application/json
+
+### 6 - DELETE succeeds
+DELETE   http://localhost:3000/artists/6355b129cd53964fae10bc8a
+content-type: application/json
+
+### 7- DELETE fails
+DELETE   http://localhost:3000/artists/6355aea5cd53964fae10bc3b
+content-type: application/json
+
+### GET songs
 GET  http://localhost:3000/songs
 content-type: application/json
 
-###
+### GET songs by artist
 GET  http://localhost:3000/songs?name=Mumford%20and%20Sons
-content-type: application/json
-
-###
-DELETE   http://localhost:3000/artists/6355aea5cd53964fae10bc3b
 content-type: application/json
