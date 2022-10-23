@@ -13,9 +13,7 @@ const songSchema = new mongoose.Schema(
         title: String,
         artist:String,
         release_year: Number,
-        artist: artistSchema,
-        edition:String,
-        price: Number
+        artist: artistSchema
     }
 )
 
@@ -30,12 +28,10 @@ function Validatesong(song)
         title: Joi.string().min(3).required().messages({"any.required" : "Title field is required"}),
         artist: artistJoiSchema,
         release_year: Joi.number().integer().min(1600).messages({"number.base" : "Year value must be a number"}),
-        price: Joi.number().min(1),
-        edition: Joi.string()
     })
     return songJoiSchema.validate(song);
 }
 
-const song = mongoose.model('song', songSchema);
+const Song = mongoose.model('song', songSchema);
 
-module.exports = {song, Validatesong}
+module.exports = {Song, Validatesong}
