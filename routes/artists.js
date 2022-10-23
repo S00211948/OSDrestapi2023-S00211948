@@ -6,18 +6,18 @@ const router = express.Router();
    router.get('/', async (req, res) => {
   
     try {
-      const { title, release_year, limit, pagenumber, pagesize } = req.query;
+      const { title, year_formed, limit, pagenumber, pagesize } = req.query;
       let filter = {};
   
       if (title) {
         filter.title = { $regex: `${title}`, $options: 'i' }
       }
 
-      const yearNumber = parseInt(release_year)
+      const yearNumber = parseInt(year_formed)
 
       if (!isNaN(yearNumber) ) {
-        Number.isInteger(release_year)
-          filter.release_year = yearNumber
+        Number.isInteger(year_formed)
+          filter.year_formed = yearNumber
       }
 
       let limitNumber = parseInt(limit)
@@ -36,14 +36,14 @@ const router = express.Router();
         pageNumberNumber = 1
       }
     
-      console.table([{Title:filter.title, Year:filter.release_year}]);    
+      console.table([{Title:filter.title, Year:filter.year_formed}]);    
 
       const artists = await Artist
       .find(filter)
       .limit(limitNumber)
-      .sort({release_year:1})
+      .sort({year_formed:1})
       .skip((pageNumberNumber -1)*pageSizeNumber)
-      .select('title release_year');
+      .select("name year_formed");
       res.json(artists);
     }
     catch (error){
