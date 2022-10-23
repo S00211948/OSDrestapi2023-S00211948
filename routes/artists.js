@@ -43,7 +43,7 @@ const router = express.Router();
       .limit(limitNumber)
       .sort({year_formed:1})
       .skip((pageNumberNumber -1)*pageSizeNumber)
-      .select("name year_formed");
+      .select("name nationality year_formed");
       res.json(artists);
     }
     catch (error){
