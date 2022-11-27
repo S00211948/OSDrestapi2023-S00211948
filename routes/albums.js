@@ -1,9 +1,9 @@
 const express = require('express');
-const {Artist, ValidateArtist} = require('../models/artist');
+const {Album, ValidateAlbum} = require('../models/artist');
 
 const router = express.Router();
 
-   router.get('/', async (req, res) => {
+   /*router.get('/', async (req, res) => {
   
     try {
       const { name, year_formed, limit} = req.query;
@@ -103,12 +103,12 @@ const router = express.Router();
       res.status(404).json(`funny id ${req.params.id} was not found`);
     }
   
-    })
+    })*/
 
     router.put('/:id', async(req,res) =>
     {
       console.log("put request started")
-      let result = ValidateArtist(req.body);
+      let result = ValidateAlbum(req.body);
       if(result.error)
       {
         res.status(400).json(result.error);
@@ -116,11 +116,11 @@ const router = express.Router();
       }
       try
       {
-        const artist = await Artist.findByIdAndUpdate(req.params.id, req.body);
-        if(artist)
-          res.status(204).json(artist);
+        const album = await Album.findByIdAndUpdate(req.params.id, req.body);
+        if(album)
+          res.status(204).json(album);
         else
-          res.status(404).json(`artist with that ID ${req.params.id} was not found`)
+          res.status(404).json(`album with that ID ${req.params.id} was not found`)
       }
       catch
       {

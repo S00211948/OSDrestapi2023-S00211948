@@ -5,6 +5,7 @@ content-type: application/json
 {
       "name":"Sample Band",
       "nationality":"British",
+      "year_formed":2016,
       "albums":[
          {
             "title":"Album1",
