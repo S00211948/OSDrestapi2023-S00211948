@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 require('dotenv').config();
-const port = process.env.PORT
+const port = 3000//process.env.PORT
 //routes
 const books = require('./routes/songs')
 const albums = require('./routes/albums')
