@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
-const connectionString = "mongodb+srv://shane:MrWorldwide@musicdb.haifu0d.mongodb.net/test"
+const connectionString = process.env.CONNECTIONSTRING//"mongodb+srv://shane:MrWorldwide@musicdb.haifu0d.mongodb.net/test"
 
 mongoose
 .connect(connectionString,

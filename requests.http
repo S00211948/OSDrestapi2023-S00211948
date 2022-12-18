@@ -173,3 +173,12 @@ content-type: application/json
 ### GET songs by artist
 GET  http://localhost:3000/songs?name=Mumford%20and%20Sons
 content-type: application/json
+
+###Testing Auth0
+# @name loginusingAuth0
+POST https://dev-c86bsw05y0tndvkn.us.auth0.com/oauth/token
+content-type: application/json
+
+{"client_id":"92kz86sxSJtD1SgjRDvoPjEIv42p3J1G",
+"client_secret":"cujYoh-j9Otxav4zcNc4I4KgbfBIogd9WQZF2DfivhWgx904mWQBdB8wtVfny7OL",
+"audience":"artists","grant_type":"client_credentials"}
